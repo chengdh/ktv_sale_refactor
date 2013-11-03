@@ -1,0 +1,42 @@
+-
+  测试calculate_sum_paid_info
+-
+  !python {model: ktv.room_operate}: |
+    #先做一个buyout_checkout
+    ctx_args = {
+        "room_id" : ref('ktv_room_1'),
+        "buyout_config_id" : ref('buyout_config_1')
+        }
+    ret = self.pool.get('ktv.room_checkout_buyout').re_calculate_fee(cr,uid,ctx_args)
+    assert ret
+    ret['osv_name'] = 'ktv.room_checkout_buyout'
+    result = self.process_operate(cr,uid,ret)
+    room_checkout_buyout = result['room_operate']
+    assert room_checkout_buyout['total_fee'] > 0
+
+    operate_id = room_checkout_buyout['room_operate_id'][0]
+    paid_info = self.calculate_sum_paid_info(cr,uid,operate_id)
+    assert paid_info['total_fee'] > 0
+-
+  测试calculate_casher_shift_report
+-
+  !python {model: ktv.room_operate}: |
+    from datetime import *
+    start_datetime =  datetime.now() - timedelta(hours = 4)
+    end_datetime =  datetime.now() + timedelta(hours = 4)
+    ret = self.calculate_casher_shift_report(cr,uid,start_datetime,end_datetime)
+    assert ret
+
+-
+  测试get_time_range
+-
+  !python {model: ktv.opening_time_config}: |
+    ret = self.get_time_range(cr,uid)
+    assert ret
+-
+  测试daily_report
+-
+  !python {model: ktv.room_operate}: |
+    ret = self.daily_report(cr,uid)
+    assert ret
+

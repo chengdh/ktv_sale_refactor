@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_ktv_room_area_form" model="ir.ui.view">
+            <field name="name">ktv.ktv_room_area</field>
+            <field name="model">ktv.room_area</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="包厢区域" version='7.0'>
+                  <sheet>
+                    <group>
+                      <field name="name" required="1" string="区域名称"/>
+                      <field name="active" string="有效"/>
+                      <field name="description" string="描述" />
+                    </group>
+                  </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_ktv_room_area_tree" model="ir.ui.view">
+            <field name="name">ktv.ktv_room_area</field>
+            <field name="model">ktv.room_area</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="room area">
+                    <field name="name"/>
+                    <field name="description" />
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="action_ktv_room_area" model="ir.actions.act_window">
+            <field name="name">包厢区域</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ktv.room_area</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name='help'>为包厢设置不同的区域</field>
+        </record>
+
+        <menuitem action="action_ktv_room_area" id="menu_action_ktv_room_area" parent="menu_ktv_room_config" name="包厢区域" sequence="0"/>
+    </data>
+</openerp>
+

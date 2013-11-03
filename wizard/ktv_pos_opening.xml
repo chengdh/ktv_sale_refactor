@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+    <record model="ir.ui.view" id="ktv_pos_opening_form_view">
+      <field name="name">ktv.pos.opening.form.view</field>
+      <field name="model">ktv.pos.opening</field>
+      <field name="arch" type="xml">
+        <form string="ktv pos Opening" version="7.0">
+          <button name="open_ui" type="object" string="打开收银系统" class="oe_highlight" />
+          <div class="oe_view_nocontent">
+            <p class="oe_view_nocontent_create">
+              点击打开ktv收银系统
+            </p>
+            <p>
+              通过ktv收银系统,你可完成包厢收费、买钟、买断、续钟、退房等操作.
+            </p>
+          </div>
+        </form>
+      </field>
+    </record>
+
+    <!--咨客-->
+    <record model="ir.ui.view" id="ktv_pos_opening_waiter_form_view">
+      <field name="name">ktv.pos.opening.waiter.form.view</field>
+      <field name="model">ktv.pos.opening</field>
+      <field name="arch" type="xml">
+        <form string="ktv pos waiter form Opening" version="7.0">
+          <button name="open_waiter_ui" type="object" string="打开咨客系统" class="oe_highlight" />
+          <div class="oe_view_nocontent">
+            <p class="oe_view_nocontent_create">
+              点击打开ktv咨客系统
+            </p>
+            <p>
+              通过ktv咨客系统,你可进行预定、开房等操作.
+            </p>
+          </div>
+        </form>
+      </field>
+    </record>
+
+
+
+    <record id="action_ktv_pos_opening" model="ir.actions.act_window">
+      <field name="name">ktv收银系统</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">ktv.pos.opening</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref='ktv_pos_opening_form_view' />
+      <field name="target">inline</field>
+    </record>
+
+    <record id="action_ktv_pos_waiter_opening" model="ir.actions.act_window">
+      <field name="name">ktv咨客系统</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">ktv.pos.opening</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref='ktv_pos_opening_waiter_form_view' />
+      <field name="target">inline</field>
+    </record>
+  </data>
+</openerp>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+    <record id="res_users_form_view" model="ir.ui.view">
+      <field name="name">res.users.form.view</field>
+      <field name="model">res.users</field>
+      <field name="inherit_id" ref="base.view_users_form" />
+      <field name="arch" type="xml">
+        <notebook position="inside">
+          <page string="KTV权限">
+            <group col='4'>
+              <div class='alert alert-info' colspan='4'>
+                <p>折扣:100为无折扣,95为9.5折,依次类推</p>
+              </div>
+              <field name='default_room_fee_discount' string='默认房费折扣'/>
+              <field name='min_room_fee_discount' string='最低房费折扣' />,
+              <field name='default_drinks_fee_discount'  string='默认酒水费折扣' />
+              <field name='min_drinks_fee_discount'  string='最低酒水费折扣' />
+              <field name='free_power'  string='免单权限' />
+              <field name='free_fee_limit' string='免单限额' />
+              <field name='on_credit_power' string='挂账权限' />
+              <field name='on_credit_fee_limit' string='挂账限额' />
+              <field name='prompt_fee_limit' string='优惠限额'/>
+              <field name='input_card_no_power' string='可手工录入卡号'/>
+            </group>
+          </page>
+        </notebook>
+      </field>
+    </record>
+  </data>
+</openerp>

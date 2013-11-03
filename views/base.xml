@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    <!--ktv根菜单-->
+    <menuitem id="menu_ktv_sale_root" name="KTV系统" 
+      groups='group_ktv_casher,group_ktv_waiter,group_ktv_member_manager,group_ktv_waiter,group_ktv_manager' sequence="0" />
+    <!--收银及咨客-->
+    <menuitem id="menu_ktv_sale_operates"   parent="menu_ktv_sale_root" name="收银及咨客" sequence="1" /> 
+    <!--会员卡管理-->
+    <menuitem id="menu_ktv_sale_card" name="卡券管理"  parent="menu_ktv_sale_root" groups="group_ktv_member_manager" sequence="3" /> 
+    <!--统计报表-->
+    <menuitem id="menu_ktv_sale_report" name="报表"  parent="menu_ktv_sale_root" groups="group_ktv_manager,group_ktv_casher" sequence="4" /> 
+
+    <!--基础资料设置-->
+    <menuitem id="menu_ktv_sale_configurations" name="设置"  parent="menu_ktv_sale_root" groups='group_ktv_manager' sequence="2" /> 
+
+    <menuitem id="menu_ktv_room_config" name="包厢设置" parent="menu_ktv_sale_configurations" sequence="2"/>
+    <menuitem id="menu_buyout_config" name="买断信息设置" parent="menu_ktv_sale_configurations" sequence="3"/>
+    <menuitem id="menu_minimum_fee_config" name="时段低消设置" parent="menu_ktv_sale_configurations" sequence="4"/>
+    <menuitem id="menu_hourly_fee_config" name="时段钟点费设置" parent="menu_ktv_sale_configurations" sequence="5"/>
+
+    <menuitem id="menu_members" name="会员管理" parent="menu_ktv_sale_card" sequence="6"/>
+    <!--抵用券管理-->
+    <menuitem id="menu_sales_voucher" name="抵用券" parent="menu_ktv_sale_card" sequence="7"/>
+
+    <!--client action 打印服务-->
+    <record model="ir.actions.client" id="action_print_service">
+      <field name="name">打印单据</field>
+      <field name="tag">ktv_sale.print_service</field>
+    </record>
+
+    <!--ktv room pos菜单定义-->
+    <!--record model="ir.actions.client" id="action_room_pos">
+      <field name="name">KTV收银</field>
+      <field name="tag">ktv_room_pos.ui</field>
+    </record-->
+
+    <!--record model="ir.actions.client" id="action_room_pos_waiter">
+      <field name="name">咨客</field>
+      <field name="tag">ktv_room_pos.ui</field>
+    </record-->
+
+
+    <menuitem id="menu_ktv_sale_touchscreen" parent="menu_ktv_sale_operates" groups='group_ktv_casher,group_ktv_manager' name="收银系统" sequence="1" action="action_ktv_pos_opening" /> 
+    <menuitem id="menu_ktv_sale_touchscreen_for_visit" parent="menu_ktv_sale_operates" groups='group_ktv_waiter,group_ktv_manager' name="咨客系统" sequence="1" action="action_ktv_pos_waiter_opening" /> 
+    <!--record id="menu_ktv_sale_touchscreen" model="ir.ui.menu">
+      <field name="name">收银</field>
+      <field name="sequence" eval="21"/>
+      <field name="action" ref="action_room_pos"/>
+    </record-->
+  </data>
+</openerp>

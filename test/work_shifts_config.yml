@@ -1,0 +1,15 @@
+-
+  测试get_work_shift
+-
+  !python {model : ktv.work_shifts_config}: |
+    from datetime import *
+    ret = self.get_work_shift(cr,uid,datetime.now())
+    assert ret
+-
+  测试get_previous_work_shift
+-
+  !python {model: ktv.work_shifts_config}: |
+    from datetime import *
+    ret = self.get_previous_work_shift(cr,uid,datetime.now())
+    assert ret
+

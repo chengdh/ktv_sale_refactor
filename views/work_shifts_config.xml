@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    <record id="view_ktv_work_shifts_config_form" model="ir.ui.view">
+      <field name="name">ktv.ktv_work_shifts_config</field>
+      <field name="model">ktv.work_shifts_config</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="work shifts config" version="7.0">
+          <sheet>
+            <group>
+              <field name="name" string="班次名称"/>
+              <field name="start_time" string="起始时间" widget='float_time' />
+              <field name="end_time" string="结束时间" widget='float_time' />
+            </group>
+            <div class="alert alert-error">
+              <p>时间应按照24小时的方式设置</p>
+            </div>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_ktv_work_shifts_config_tree" model="ir.ui.view">
+      <field name="name">ktv.ktv_work_shifts_config_tree</field>
+      <field name="model">ktv.work_shifts_config</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree string="工作班次设置">
+          <field name="name" string="班次名称"/>
+          <field name="start_time" string="起始时间" widget='float_time' />
+          <field name="end_time" string="结束时间" widget='float_time' />
+        </tree>
+      </field>
+    </record>
+
+
+    <record id="action_ktv_work_shifts_config" model="ir.actions.act_window">
+      <field name="name">班次设置</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">ktv.work_shifts_config</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name='help'>设置工作班次,便于按照时间段进行核算</field>
+    </record>
+
+    <menuitem action="action_ktv_work_shifts_config" id="menu_action_ktv_work_shifts_config" parent="menu_ktv_sale_configurations" name="班次设置" sequence="0"/>
+  </data>
+</openerp>

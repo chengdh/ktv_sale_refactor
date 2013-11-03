@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    <record id="view_ktv_opening_time_config_form" model="ir.ui.view">
+      <field name="name">ktv.ktv_opening_time_config</field>
+      <field name="model">ktv.opening_time_config</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="opening time config" version="7.0">
+          <sheet>
+            <group col='3'>
+              <field name="open_time" string="起始时间" widget='float_time' /><span>点</span>
+           </group>
+           <div class="alert alert-error">
+             <p>起始时间必须是24小时</p>
+           </div>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_ktv_opening_time_config_tree" model="ir.ui.view">
+      <field name="name">ktv.ktv_opening_time_config_tree</field>
+      <field name="model">ktv.opening_time_config</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree string="营业时间设置">
+          <field name="open_time" string="营业开始时间" widget='float_time'/>
+        </tree>
+      </field>
+    </record>
+
+
+    <record id="action_ktv_opening_time_config" model="ir.actions.act_window">
+      <field name="name">营业时间</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">ktv.opening_time_config</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">form</field>
+      <field name='help'>设置营业场所的起始营业时间,便于进行核算</field>
+    </record>
+
+    <menuitem action="action_ktv_opening_time_config" id="menu_action_ktv_opening_time_config" parent="menu_ktv_sale_configurations" name="营业时间" sequence="0"/>
+  </data>
+</openerp>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    <!--client action 日营业额统计-->
+    <record model="ir.actions.client" id="action_daily_report">
+      <field name="name">日营业额统计</field>
+      <field name="tag">ktv_sale.daily_report</field>
+    </record>
+    <menuitem action="action_daily_report" id="menu_action_daily_report" parent="menu_ktv_sale_report" name="日营业额统计" sequence="3"/>
+  </data>
+</openerp>
+

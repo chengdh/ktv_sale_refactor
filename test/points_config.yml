@@ -1,0 +1,14 @@
+-
+  测试points_config#calculate_room_fee_points
+-
+  !python {model: ktv.points_config}: |
+    #系统默认数据,房费200积2分
+    points = self.calculate_room_fee_points(cr,uid,3000.00)
+    assert points > 0
+
+-
+  测试points_config#calculate_drinks_fee_points
+-
+  !python {model: ktv.points_config}: |
+    points = self.calculate_room_fee_points(cr,uid,2000.00)
+    assert points  > 0

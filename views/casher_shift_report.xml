@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    <record id="view_casher_shift_report_form" model="ir.ui.view">
+      <field name="name">ktv.casher_shift_report_form</field>
+      <field name="model">ktv.casher_shift_report</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="casher shift report" version="7.0">
+          <sheet>
+            <group col='4'>
+              <field name='shift_name' string='班次'/>
+              <field name="shifter_id" string="收银员" />
+            </group>
+            <group col='4'>
+              <field name="start_datetime" string="起始时间" />
+              <field name="end_datetime" string="结束时间" />
+            </group>
+            <seprator string="交班结算:" />
+            <group col='4'>
+              <field name="cash_fee" string="现金" />
+              <field name="member_card_fee" string="会员卡" />
+            </group>
+            <group col='4'>
+              <field name="check_fee" string="支票" />
+              <field name="store_card_fee" string="储值卡"/>
+            </group>
+            <group col='4'>
+              <field name="free_fee" string="免单" />
+              <field name="credit_card_fee" string="信用卡"/>
+            </group>
+            <group col='4'>
+              <field name="on_credit_fee" string="挂账" />
+              <field name="sales_voucher_fee" string="抵用券"/>
+            </group>
+            <group col='4'>
+              <field name='sum_fee' string='实收:' />
+            </group>
+            <seprator string='交班信息:' />
+            <group col='4'>
+              <field name='previous_open_count' string='前班开台数' />
+              <field name='current_open_count' string='当班开台数' />
+            </group>
+            <group col='4'>
+              <field name='previous_close_count' string='前班已结数' />
+              <field name='current_close_count' string='当班已结数' />
+            </group>
+            <group col='4'>
+              <field name='previous_not_close_count' string='前班未结数' />
+              <field name='current_not_close_count' string='当班未结数' />
+            </group>
+            <group col='4'>
+              <field name='previous_bills_count' string='前班账单数' />
+              <field name='current_bills_count' string='当班账单数' />
+            </group>
+            <seprator string='交班信息:' />
+            <group col='4'>
+              <field name='sum_open_count' string='合计开台数' />
+              <field name='member_card_count' string='会员卡销售数量' />
+            </group>
+            <group col='4'>
+              <field name='sum_close_count' string='合计已结数' />
+              <field name='new_member_card_fee' string='会员卡销售金额' />
+            </group>
+            <group col='4'>
+              <field name='sum_not_close_count' string='合计未结数' />
+              <field name='member_charge_fee' string='会员卡充值金额' />
+            </group>
+            <group col='4'>
+              <field name='sum_bills_count' string='合计账单数' />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_casher_shift_report_tree" model="ir.ui.view">
+      <field name="name">ktv.casher_shift_report_tree</field>
+      <field name="model">ktv.casher_shift_report</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree string="收银交接单">
+          <field name="shifter_id" string="收银员"/>
+          <field name="shift_name" string="班次"/>
+          <field name="start_datetime" string="开始时间"/>
+          <field name="end_datetime" string="结束时间"/>
+          <field name="sum_fee" string="实收金额"/>
+          <field name="new_member_card_fee" string="会员卡销售金额"/>
+          <field name="member_charge_fee" string="会员卡充值金额"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <record id="action_casher_shift_report" model="ir.actions.act_window">
+      <field name="name">收银交接单</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">ktv.casher_shift_report</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name='help'>收银交接单</field>
+    </record>
+    <menuitem action="action_casher_shift_report" id="menu_action_casher_shift_report" parent="menu_ktv_sale_report" name="收银交接单" sequence="5"/>
+  </data>
+</openerp>

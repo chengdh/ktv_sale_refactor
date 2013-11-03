@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    <record id="view_song_ticket_form" model="ir.ui.view">
+      <field name="name">ktv.song_ticket_form</field>
+      <field name="model">ktv.song_ticket</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="欢唱券" version='7.0'>
+          <sheet>
+            <group col='4'>
+              <field name="name" string='名称'/>
+              <field name="room_type_id" string='包厢类别'/>
+              <field name="equal_minutes" string="分钟数"/>
+              <field name="active_time_limit" string="启用时间限制"/>
+              <field name="time_from" string="起始时间" attrs="{'readonly' : [('active_time_limit','=',False)]}" />
+              <field name="time_to"  string="结束时间" attrs="{'readonly' : [('active_time_limit','=',False)]}" />
+              <field name="active" string="有效"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_song_ticket_tree" model="ir.ui.view">
+      <field name="name">ktv.song_ticket_tree</field>
+      <field name="model">ktv.song_ticket</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree string="欢唱券设置">
+          <field name="name" string='名称'/>
+          <field name="room_type_id" string='包厢类别'/>
+          <field name="equal_minutes" string="分钟数"/>
+          <field name="active_time_limit" string="启用时间限制"/>
+          <field name="time_from" string="起始时间" attrs="{'readonly' : [('active_time_limit','=',False)]}" />
+          <field name="time_to"  string="结束时间" attrs="{'readonly' : [('active_time_limit','=',False)]}" />
+          <field name="active" string="有效"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <record id="action_song_ticket" model="ir.actions.act_window">
+      <field name="name">欢唱券设置</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">ktv.song_ticket</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name='help'>欢唱券设置</field>
+    </record>
+    <menuitem action="action_song_ticket" id="menu_action_song_ticket" parent="menu_sales_voucher" name="欢唱券设置" sequence="1"/>
+  </data>
+</openerp>
+

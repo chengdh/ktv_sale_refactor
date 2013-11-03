@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data noupdate="0">
+    <record id="group_ktv_casher" model="res.groups">
+      <field name="name">收银员</field>
+      <field name="category_id" ref="base.module_category_ktv"/>
+    </record>
+
+    <record id="group_ktv_waiter" model="res.groups">
+      <field name="name">咨客</field>
+      <field name="category_id" ref="base.module_category_ktv"/>
+    </record>
+
+    <record id="group_ktv_member_manager" model="res.groups">
+      <field name="name">会员管理</field>
+      <field name="category_id" ref="base.module_category_ktv"/>
+    </record>
+
+
+    <record id="group_ktv_manager" model="res.groups">
+      <field name="name">经理</field>
+      <field name="category_id" ref="base.module_category_ktv"/>
+      <field name="implied_ids" eval="[(4, ref('group_ktv_casher')),(4, ref('group_ktv_member_manager')),(4, ref('group_ktv_waiter'))]"/>
+      <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+  </data>
+
+</openerp>

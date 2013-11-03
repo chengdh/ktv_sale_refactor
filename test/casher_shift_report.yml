@@ -1,0 +1,6 @@
+-
+  测试收银交接单
+-
+  !python {model : ktv.casher_shift_report,view: False}: |
+    ret = self.get_shift_report(cr,uid)
+    assert ret
